@@ -1148,9 +1148,18 @@ public class ImportTool extends com.cloudera.sqoop.tool.BaseSqoopTool {
 
     if (options.getIncrementalMode() == SqoopOptions.IncrementalMode.DateLastModified
         && options.getFileLayout() == SqoopOptions.FileLayout.AvroDataFile) {
-      throw new InvalidOptionsException("--"
-          + INCREMENT_TYPE_ARG + " lastmodified cannot be used in conjunction with --"
-          + FMT_AVRODATAFILE_ARG + "." + HELP_STR);
+
+      boolean targetExists = false;
+      try {
+        FileSystem fs = FileSystem.get(options.getConf());
+        targetExists = fs.exists(getOutputPath(options, options.getTableName(), false));
+      } catch (IOException e) { }
+      
+      if (targetExists) {
+        throw new InvalidOptionsException("--"
+            + INCREMENT_TYPE_ARG + " lastmodified cannot be used in conjunction with --"
+            + FMT_AVRODATAFILE_ARG + "." + HELP_STR);
+      }
     }
   }
 
