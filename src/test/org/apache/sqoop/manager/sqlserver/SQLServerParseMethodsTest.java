@@ -173,7 +173,6 @@ public class SQLServerParseMethodsTest extends ImportJobTestCase {
       job.set(ReparseMapper.USER_TYPE_NAME_KEY, tableClassName);
 
       // use local mode in the same JVM.
-      ConfigurationHelper.setJobtrackerAddr(job, "local");
       job.set("fs.default.name", "file:///");
 
       String warehouseDir = getWarehouseDir();

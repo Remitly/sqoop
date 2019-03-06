@@ -34,9 +34,6 @@ public final class ConfigurationConstants {
   public static final String PROP_MAPRED_REDUCE_TASKS_SPECULATIVE_EXEC =
     org.apache.sqoop.config.
         ConfigurationConstants.PROP_MAPRED_REDUCE_TASKS_SPECULATIVE_EXEC;
-  public static final String PROP_MAPRED_JOB_TRACKER_ADDRESS =
-    org.apache.sqoop.config.
-        ConfigurationConstants.PROP_MAPRED_JOB_TRACKER_ADDRESS;
   public static final String COUNTER_GROUP_MAPRED_TASK_COUNTERS =
     org.apache.sqoop.config.
         ConfigurationConstants.COUNTER_GROUP_MAPRED_TASK_COUNTERS;

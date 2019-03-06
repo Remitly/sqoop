@@ -42,6 +42,7 @@ import com.cloudera.sqoop.SqoopOptions;
 import com.cloudera.sqoop.SqoopOptions.InvalidOptionsException;
 import com.cloudera.sqoop.cli.RelatedOptions;
 import com.cloudera.sqoop.cli.ToolOptions;
+import org.apache.sqoop.config.ConfigurationHelper;
 import com.cloudera.sqoop.hive.HiveImport;
 import com.cloudera.sqoop.manager.ImportJobContext;
 import com.cloudera.sqoop.mapreduce.MergeJob;
@@ -111,9 +112,7 @@ public class ImportTool extends com.cloudera.sqoop.tool.BaseSqoopTool {
   private void loadJars(Configuration conf, String ormJarFile,
                         String tableClassName) throws IOException {
 
-    boolean isLocal = "local".equals(conf.get("mapreduce.jobtracker.address"))
-        || "local".equals(conf.get("mapred.job.tracker"));
-    if (isLocal) {
+    if (ConfigurationHelper.isLocalJobTracker(conf)) {
       // If we're using the LocalJobRunner, then instead of using the compiled
       // jar file as the job source, we're running in the current thread. Push
       // on another classloader that loads from that jar in addition to

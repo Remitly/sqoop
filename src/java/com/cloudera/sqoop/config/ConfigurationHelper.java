@@ -63,11 +63,6 @@ public final class ConfigurationHelper {
         ConfigurationHelper.setJobReduceSpeculativeExecution(job, isEnabled);
   }
 
-  public static void setJobtrackerAddr(Configuration conf, String addr) {
-    org.apache.sqoop.config.
-        ConfigurationHelper.setJobtrackerAddr(conf, addr);
-  }
-
   public static String getDbInputClassProperty() {
     return org.apache.sqoop.config.
                ConfigurationHelper.getDbInputClassProperty();
